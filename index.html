@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>원의 반경 계산하기</title>
+    <title>단거리? 장거리?</title>
     <style>
 .info {position:relative;top:5px;left:5px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;font-size:12px;padding:5px;background:#fff;list-style:none;margin:0;} 
 .info:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}    
@@ -39,6 +39,32 @@ var drawingDot; // 그려지고 있는 원의 중심점을 표시할 커스텀�
 
 var circles = []; // 클릭으로 그려진 원과 반경 정보를 표시하는 선과 커스텀오버레이를 가지고 있을 배열입니다
 
+var circle = new daum.maps.Circle({
+    center : new daum.maps.LatLng(37.301819, 127.0667127),  // 원의 중심좌표 입니다 
+    radius: 40000, // 미터 단위의 원의 반지름입니다 
+    strokeWeight: 1, // 선의 두께입니다 
+    strokeColor: '#75B8FA', // 선의 색깔입니다
+    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+    strokeStyle: 'dashed', // 선의 스타일 입니다
+    fillColor: '#ffffff', // 채우기 색깔입니다
+    fillOpacity: 0.5  // 채우기 불투명도 입니다   
+}); 
+    
+    var circle2 = new daum.maps.Circle({
+    center : new daum.maps.LatLng(37.301819, 127.0667127),  // 원의 중심좌표 입니다 
+    radius: 80000, // 미터 단위의 원의 반지름입니다 
+    strokeWeight: 1, // 선의 두께입니다 
+    strokeColor: '#75B8FA', // 선의 색깔입니다
+    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+    strokeStyle: 'dashed', // 선의 스타일 입니다
+    fillColor: '#ffffff', // 채우기 색깔입니다
+    fillOpacity: 0.5  // 채우기 불투명도 입니다   
+}); 
+
+// 지도에 원을 표시합니다 
+circle.setMap(map);     
+    
+    
 // 지도에 클릭 이벤트를 등록합니다
 daum.maps.event.addListener(map, 'click', function(mouseEvent) {
         
